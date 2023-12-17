@@ -1,7 +1,6 @@
 package ru.job4j.url.repository;
 
 import lombok.AllArgsConstructor;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Repository;
 import ru.job4j.url.model.Account;
 import java.util.List;

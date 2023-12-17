@@ -1,10 +1,10 @@
 package ru.job4j.url.model;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import javax.persistence.*;
 
 /**
  * Модель данных аккаунта. Пользователь отправляет в сервис доменный адрес сайта, сервис регистрирует сайт

@@ -1,6 +1,5 @@
 package ru.job4j.url.controller;
 
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.job4j.url.model.Account;
 import ru.job4j.url.model.AccountDTO;
 import ru.job4j.url.service.HibernateAccountService;
-
+import javax.validation.Valid;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
