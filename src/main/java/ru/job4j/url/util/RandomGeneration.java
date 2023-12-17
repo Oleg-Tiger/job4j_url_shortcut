@@ -10,7 +10,6 @@ import java.util.stream.IntStream;
 public class RandomGeneration {
 
     public static final String LOWER_UPPER_NUMBERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    public static final String LOWER_UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
     /**
      * Метод для генерации последовательности. В качестве аргументов принимает длину строки, которая должна получиться

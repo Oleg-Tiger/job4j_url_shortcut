@@ -1,6 +1,5 @@
 package ru.job4j.url.repository;
 
-import ru.job4j.url.model.Account;
 import ru.job4j.url.model.Link;
 import java.util.List;
 import java.util.Optional;
@@ -12,7 +11,9 @@ public interface LinkRepository {
 
     List<Link> findAll();
 
-    Optional<Link> add(Link link);
+    public Optional<Link> findByUrl(String url);
+
+    Link add(Link link);
 
     Optional<Link> findById(Link link);
 

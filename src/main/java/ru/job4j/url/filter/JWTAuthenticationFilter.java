@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
-
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 
 /**
@@ -30,7 +29,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public static final String HEADER_STRING = "Authorization";
     public static final String SIGN_UP_URL = "/account/sign-up";
     public static final String REDIRECT_URL = "/link/redirect/{code}";
-
     private AuthenticationManager auth;
 
     public JWTAuthenticationFilter(AuthenticationManager auth) {

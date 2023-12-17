@@ -5,9 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
-
 /**
  * Модель данных описывающая ссылки
  */
@@ -29,7 +26,7 @@ public class Link {
     /**
      * Значение ссылки
      */
-    private String link;
+    private String url;
 
     /**
      * Ключ - преобразованное сервисом значение, соответствующее ссылке
@@ -41,6 +38,12 @@ public class Link {
      * Количество обращений к данной ссылке
      */
     @Column(name = "number_requests")
-    private AtomicInteger numberRequests = new AtomicInteger(0);
+    private int numberRequests;
 
+    public Link(String url, String key) {
+        this.url = url;
+        this.key = key;
+        this.id = 0;
+        this.numberRequests = 0;
+    }
 }
