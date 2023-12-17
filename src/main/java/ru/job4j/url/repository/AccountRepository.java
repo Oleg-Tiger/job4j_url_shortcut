@@ -12,7 +12,9 @@ public interface AccountRepository {
 
 List<Account> findAll();
 
-Optional<Account> add(Account account);
+Optional<Account> findBySite(String site);
+
+Account add(Account account);
 
 Optional<Account> findById(Account account);
 

@@ -1,6 +1,7 @@
 package ru.job4j.url.service;
 
 import ru.job4j.url.model.Account;
+import ru.job4j.url.model.AccountDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,7 +13,7 @@ public interface AccountService {
 
     List<Account> findAll();
 
-    Optional<Account> add(Account account);
+    Optional<Account> add(AccountDTO accountDTO);
 
     Optional<Account> findById(Account account);
 

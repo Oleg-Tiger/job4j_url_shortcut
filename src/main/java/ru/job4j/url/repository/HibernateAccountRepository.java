@@ -1,10 +1,11 @@
 package ru.job4j.url.repository;
 
 import lombok.AllArgsConstructor;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Repository;
 import ru.job4j.url.model.Account;
-
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -18,7 +19,7 @@ public class HibernateAccountRepository implements AccountRepository {
      * На данный объект мы будем делегировать выполнение команд, передавая в аргументы его методов
      * необходимые запросы и параметры
      */
-    private final CrudRepository repository;
+    private final CrudRepository crudRepository;
 
     /**
      * Поиск всех аккаунтов
@@ -29,11 +30,25 @@ public class HibernateAccountRepository implements AccountRepository {
     }
 
     /**
-     * Добавить аккаунт
+     * Поиск аккаунта по домену
+     * @param site - строка содержащая домен сайта
+     * @return Optional найденного объекта Account или пустой Optional
      */
     @Override
-    public Optional<Account> add(Account account) {
-        return Optional.empty();
+    public Optional<Account> findBySite(String site) {
+        return crudRepository.optional("from Account as a where a.site = :fSite", Account.class,
+                Map.of("fSite", site));
+    }
+
+    /**
+     * Добавить аккаунт.
+     * @param account - объект Account
+     * @return объект Account с присвоенным сгенерированным id
+     */
+    @Override
+    public Account add(Account account) {
+        crudRepository.run(session -> session.persist(account));
+        return account;
     }
 
     /**
