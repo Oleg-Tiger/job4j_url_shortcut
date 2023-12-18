@@ -16,5 +16,7 @@ public interface LinkRepository {
     public Optional<Link> findByKey(String key);
 
     Link add(Link link);
+
+    void updateTotal(int id);
 }
 

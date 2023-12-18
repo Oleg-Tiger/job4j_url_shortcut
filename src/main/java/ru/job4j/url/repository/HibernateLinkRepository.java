@@ -63,4 +63,14 @@ public class HibernateLinkRepository implements LinkRepository {
         crudRepository.run(session -> session.persist(link));
         return link;
     }
+
+    /**
+     * Инкрементировать счётчик ссылки.
+     * @param id - id ссылки
+     */
+    @Override
+    public void updateTotal(int id) {
+        crudRepository.run("update Link as l set l.total = l.total + 1 where id = :fId",
+                Map.of("fId", id));
+    }
 }

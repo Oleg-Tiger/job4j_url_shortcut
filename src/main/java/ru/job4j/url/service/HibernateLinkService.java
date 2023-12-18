@@ -7,7 +7,6 @@ import ru.job4j.url.model.LinkDTO;
 import ru.job4j.url.model.LinkDTOStat;
 import ru.job4j.url.repository.HibernateLinkRepository;
 import ru.job4j.url.util.RandomGeneration;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -42,7 +41,11 @@ public class HibernateLinkService implements LinkService {
 
     @Override
     public Optional<Link> findByKey(String key) {
-        return repository.findByKey(key);
+        Optional<Link> link = repository.findByKey(key);
+        if (link.isPresent()) {
+            repository.updateTotal(link.get().getId());
+        }
+        return link;
     }
 
     /**
