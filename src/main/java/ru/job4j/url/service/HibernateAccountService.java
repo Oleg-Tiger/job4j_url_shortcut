@@ -9,7 +9,6 @@ import ru.job4j.url.model.Account;
 import ru.job4j.url.model.AccountDTO;
 import ru.job4j.url.repository.HibernateAccountRepository;
 import ru.job4j.url.util.RandomGeneration;
-import java.util.List;
 import java.util.Optional;
 
 /**

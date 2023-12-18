@@ -2,6 +2,8 @@ package ru.job4j.url.service;
 
 import ru.job4j.url.model.Link;
 import ru.job4j.url.model.LinkDTO;
+import ru.job4j.url.model.LinkDTOStat;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +12,7 @@ import java.util.Optional;
  */
 public interface LinkService {
 
-    List<Link> findAll();
+    List<LinkDTOStat> findAll();
 
     Optional<Link> findByKey(String key);
 

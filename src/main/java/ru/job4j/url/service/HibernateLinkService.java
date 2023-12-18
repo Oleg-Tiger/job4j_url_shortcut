@@ -4,10 +4,14 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.job4j.url.model.Link;
 import ru.job4j.url.model.LinkDTO;
+import ru.job4j.url.model.LinkDTOStat;
 import ru.job4j.url.repository.HibernateLinkRepository;
 import ru.job4j.url.util.RandomGeneration;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Класс - реализация сервиса для работы с Link с использованием Hibernate
@@ -19,11 +23,15 @@ public class HibernateLinkService implements LinkService {
     private final HibernateLinkRepository repository;
 
     /**
-     * Найти все ссылки
+     * Найти все ссылки. Получает все ссылки из репозитория, преобразует их в DTO-модель возвращает в
+     * виде списка
      */
     @Override
-    public List<Link> findAll() {
-        return repository.findAll();
+    public List<LinkDTOStat> findAll() {
+        List<LinkDTOStat> result = new ArrayList<>();
+        return repository.findAll().stream()
+                .map(link -> new LinkDTOStat(link.getUrl(), link.getTotal()))
+                .collect(Collectors.toList());
     }
 
     /**

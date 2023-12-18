@@ -2,7 +2,7 @@ create table if not exists links (
 id serial primary key,
 url text not null unique,
 key_link text not null unique,
-number_requests int
+total int
 );
 
 comment on table links is 'Таблица ссылок';

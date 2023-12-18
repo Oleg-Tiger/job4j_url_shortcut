@@ -6,10 +6,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.url.model.Link;
 import ru.job4j.url.model.LinkDTO;
+import ru.job4j.url.model.LinkDTOStat;
 import ru.job4j.url.service.HibernateLinkService;
 import javax.validation.Valid;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Класс-контроллер ссылок для взаимодействия с пользователем
@@ -49,7 +53,7 @@ public class LinkController {
     }
 
     @GetMapping("/statistic")
-    public ResponseEntity<Map<String, String>> stat() {
-        return null;
+    public ResponseEntity<List<LinkDTOStat>> stat() {
+        return ResponseEntity.ok(service.findAll());
     }
 }

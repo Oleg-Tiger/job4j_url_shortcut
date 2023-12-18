@@ -37,13 +37,12 @@ public class Link {
     /**
      * Количество обращений к данной ссылке
      */
-    @Column(name = "number_requests")
-    private int numberRequests;
+    private int total;
 
     public Link(String url, String key) {
         this.url = url;
         this.key = key;
         this.id = 0;
-        this.numberRequests = 0;
+        this.total = 0;
     }
 }
