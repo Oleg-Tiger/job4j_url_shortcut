@@ -12,11 +12,7 @@ public interface LinkService {
 
     List<Link> findAll();
 
+    Optional<Link> findByKey(String key);
+
     Optional<Link> add(LinkDTO linkDTO);
-
-    Optional<Link> findById(Link link);
-
-    Optional<Link> update(Link link);
-
-    boolean delete(Link link);
 }

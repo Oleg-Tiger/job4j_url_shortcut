@@ -9,15 +9,7 @@ import java.util.Optional;
  */
 public interface AccountRepository {
 
-List<Account> findAll();
-
 Optional<Account> findBySite(String site);
 
 Account add(Account account);
-
-Optional<Account> findById(Account account);
-
-Optional<Account> update(Account account);
-
-boolean delete(Account account);
 }

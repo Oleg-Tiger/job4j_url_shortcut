@@ -10,13 +10,5 @@ import java.util.Optional;
  */
 public interface AccountService {
 
-    List<Account> findAll();
-
     Optional<Account> add(AccountDTO accountDTO);
-
-    Optional<Account> findById(Account account);
-
-    Optional<Account> update(Account account);
-
-    boolean delete(Account account);
 }

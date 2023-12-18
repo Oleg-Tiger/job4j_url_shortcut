@@ -27,14 +27,6 @@ public class HibernateAccountService implements AccountService {
     private static final Logger LOG = LoggerFactory.getLogger(HibernateAccountService.class.getName());
 
     /**
-     * Поиск всех аккаунтов
-     */
-    @Override
-    public List<Account> findAll() {
-        return repository.findAll();
-    }
-
-    /**
      * Добавить аккаунт. Прежде чем добавить аккаунт проверяет, нет ли аккаунта с таким доменом в БД
      * @Param модель Account DTO
      * @return пустой Optional, если сайт с таким доменом уже есть в БД, если нет - добавляет и возвращает
@@ -51,29 +43,5 @@ public class HibernateAccountService implements AccountService {
         Account accountWithId = repository.add(account);
         accountWithId.setPassword(password);
         return Optional.of(accountWithId);
-    }
-
-    /**
-     * Поиск аккаунта по id
-     */
-    @Override
-    public Optional<Account> findById(Account account) {
-        return repository.findById(account);
-    }
-
-    /**
-     * Обновление аккаунта
-     */
-    @Override
-    public Optional<Account> update(Account account) {
-        return repository.update(account);
-    }
-
-    /**
-     * Удалить аккаунт
-     */
-    @Override
-    public boolean delete(Account account) {
-        return repository.delete(account);
     }
 }

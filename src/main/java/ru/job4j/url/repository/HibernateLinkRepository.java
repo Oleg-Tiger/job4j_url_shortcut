@@ -3,6 +3,8 @@ package ru.job4j.url.repository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
 import ru.job4j.url.model.Link;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -25,7 +27,7 @@ public class HibernateLinkRepository implements LinkRepository {
      */
     @Override
     public List<Link> findAll() {
-        return null;
+        return new ArrayList<>();
     }
 
     /**
@@ -40,37 +42,25 @@ public class HibernateLinkRepository implements LinkRepository {
     }
 
     /**
-     * Добавить аккаунт.
+     * Поиск Link по key - зашифрованной ссылке
+     * @param key - строка содержащая зашифрованную ссылку объекта Link
+     * @return Optional найденного объекта Link или пустой Optional
+     */
+    @Override
+    public Optional<Link> findByKey(String key) {
+        return crudRepository.optional("from Link as l where l.key = :fKey", Link.class,
+                Map.of("fKey", key));
+    }
+
+    /**
+     * Добавить ссылку.
      * @param link - объект Link
      * @return объект Link с присвоенным сгенерированным id
      */
+
     @Override
     public Link add(Link link) {
         crudRepository.run(session -> session.persist(link));
         return link;
-    }
-
-    /**
-     * Найти ссылку по id
-     */
-    @Override
-    public Optional<Link> findById(Link link) {
-        return Optional.empty();
-    }
-
-    /**
-     * Обновить ссылку
-     */
-    @Override
-    public Optional<Link> update(Link link) {
-        return Optional.empty();
-    }
-
-    /**
-     * Удалить ссылку
-     */
-    @Override
-    public boolean delete(Link link) {
-        return false;
     }
 }

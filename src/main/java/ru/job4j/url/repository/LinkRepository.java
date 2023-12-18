@@ -13,12 +13,8 @@ public interface LinkRepository {
 
     public Optional<Link> findByUrl(String url);
 
+    public Optional<Link> findByKey(String key);
+
     Link add(Link link);
-
-    Optional<Link> findById(Link link);
-
-    Optional<Link> update(Link link);
-
-    boolean delete(Link link);
 }
 

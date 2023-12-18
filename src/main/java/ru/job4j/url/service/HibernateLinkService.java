@@ -27,6 +27,17 @@ public class HibernateLinkService implements LinkService {
     }
 
     /**
+     * Поиск Link по key - зашифрованной ссылке
+     * @param key - строка содержащая зашифрованную ссылку объекта Link
+     * @return Optional найденного объекта Link или пустой Optional
+     */
+
+    @Override
+    public Optional<Link> findByKey(String key) {
+        return repository.findByKey(key);
+    }
+
+    /**
      * Добавить ссылку
      * @param linkDTO - объект, содержащий url
      * @return если объект с таким значением url уже есть в БД, то будет возвращен его Optional
@@ -43,29 +54,5 @@ public class HibernateLinkService implements LinkService {
         Link link = new Link(linkDTO.getUrl(), key);
         Link linkWithId = repository.add(link);
         return Optional.of(linkWithId);
-    }
-
-    /**
-     * Найти ссылку по id
-     */
-    @Override
-    public Optional<Link> findById(Link link) {
-        return repository.findById(link);
-    }
-
-    /**
-     * Обновить ссылку
-     */
-    @Override
-    public Optional<Link> update(Link link) {
-        return repository.update(link);
-    }
-
-    /**
-     * Удалить ссылку
-     */
-    @Override
-    public boolean delete(Link link) {
-        return repository.delete(link);
     }
 }
