@@ -9,11 +9,9 @@ import ru.job4j.url.model.LinkDTO;
 import ru.job4j.url.model.LinkDTOStat;
 import ru.job4j.url.service.HibernateLinkService;
 import javax.validation.Valid;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * Класс-контроллер ссылок для взаимодействия с пользователем
@@ -51,6 +49,11 @@ public class LinkController {
                 .header("HTTP CODE", "302 REDIRECT URL")
                 .body(Map.of("url", result.get().getUrl()));
     }
+
+    /**
+     * Метод для получения статистики обращения к ссылкам.
+     * Возвращает список всех ссылок и количество обращений к ним
+     */
 
     @GetMapping("/statistic")
     public ResponseEntity<List<LinkDTOStat>> stat() {
