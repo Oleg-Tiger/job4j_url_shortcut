@@ -57,7 +57,6 @@ public class HibernateLinkRepository implements LinkRepository {
      * @param link - объект Link
      * @return объект Link с присвоенным сгенерированным id
      */
-
     @Override
     public Link add(Link link) {
         crudRepository.run(session -> session.persist(link));

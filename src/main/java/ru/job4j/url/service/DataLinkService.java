@@ -5,20 +5,20 @@ import org.springframework.stereotype.Service;
 import ru.job4j.url.model.Link;
 import ru.job4j.url.model.LinkDTO;
 import ru.job4j.url.model.LinkDTOStat;
-import ru.job4j.url.repository.HibernateLinkRepository;
+import ru.job4j.url.repository.DataLinkRepository;
 import ru.job4j.url.util.RandomGeneration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
- * Класс - реализация сервиса для работы с Link с использованием Hibernate
+ * Класс - реализация сервиса для работы с Link с использованием Spring Data
  */
 @Service
 @AllArgsConstructor
-public class HibernateLinkService implements LinkService {
+public class DataLinkService implements LinkService {
 
-    private final HibernateLinkRepository repository;
+    private final DataLinkRepository repository;
 
     /**
      * Найти все ссылки. Получает все ссылки из репозитория, преобразует их в DTO-модель возвращает в
@@ -26,9 +26,9 @@ public class HibernateLinkService implements LinkService {
      */
     @Override
     public List<LinkDTOStat> findAll() {
-        return repository.findAll().stream()
-                .map(link -> new LinkDTOStat(link.getUrl(), link.getTotal()))
-                .collect(Collectors.toList());
+        List<LinkDTOStat> rsl = new ArrayList<>();
+        repository.findAll().forEach(link -> rsl.add(new LinkDTOStat(link.getUrl(), link.getTotal())));
+        return rsl;
     }
 
     /**
@@ -36,7 +36,6 @@ public class HibernateLinkService implements LinkService {
      * @param key - строка содержащая зашифрованную ссылку объекта Link
      * @return Optional найденного объекта Link или пустой Optional
      */
-
     @Override
     public Optional<Link> findByKey(String key) {
         Optional<Link> link = repository.findByKey(key);
@@ -61,7 +60,7 @@ public class HibernateLinkService implements LinkService {
         }
         String key = RandomGeneration.generateRandomSequence(8, RandomGeneration.LOWER_UPPER_NUMBERS);
         Link link = new Link(linkDTO.getUrl(), key);
-        Link linkWithId = repository.add(link);
+        Link linkWithId = repository.save(link);
         return Optional.of(linkWithId);
     }
 }

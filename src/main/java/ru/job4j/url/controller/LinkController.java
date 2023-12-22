@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.job4j.url.model.Link;
 import ru.job4j.url.model.LinkDTO;
 import ru.job4j.url.model.LinkDTOStat;
-import ru.job4j.url.service.HibernateLinkService;
+import ru.job4j.url.service.DataLinkService;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +21,7 @@ import java.util.Optional;
 @RequestMapping("/link")
 public class LinkController {
 
-    private final HibernateLinkService service;
+    private final DataLinkService service;
 
     /**
      * Метод для конвертации ссылки.

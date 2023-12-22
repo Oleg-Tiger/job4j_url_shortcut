@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.job4j.url.model.Account;
 import ru.job4j.url.model.AccountDTO;
-import ru.job4j.url.service.HibernateAccountService;
+import ru.job4j.url.service.DataAccountService;
 import javax.validation.Valid;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -23,7 +23,7 @@ import java.util.Optional;
 @RequestMapping("/account")
 public class AccountController {
 
-    private final HibernateAccountService service;
+    private final DataAccountService service;
 
     /**
      * Метод регистрации нового сайта.
@@ -35,10 +35,11 @@ public class AccountController {
     @PostMapping("/sign-up")
     public ResponseEntity<Map<String, String>> registration(@Valid @RequestBody AccountDTO accountDTO) {
         Optional<Account> result = service.add(accountDTO);
-        boolean isEmpty = result.isEmpty();
-        HttpStatus status = isEmpty ? HttpStatus.CONFLICT : HttpStatus.CREATED;
-        Map resp = isEmpty ? Map.of("registration", "false") : generateResp(result.get());
-        return new ResponseEntity<>(resp, status);
+        if (result.isEmpty()) {
+            return new ResponseEntity<>(Map.of("registration", "false"), HttpStatus.CONFLICT);
+        }
+        Map response = generateResp(result.get());
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     /**
