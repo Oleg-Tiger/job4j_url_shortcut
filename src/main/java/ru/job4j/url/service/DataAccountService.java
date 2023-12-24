@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.job4j.url.model.Account;
-import ru.job4j.url.model.AccountDTO;
+import ru.job4j.url.dto.AccountDTO;
 import ru.job4j.url.repository.DataAccountRepository;
 import ru.job4j.url.util.RandomGeneration;
 

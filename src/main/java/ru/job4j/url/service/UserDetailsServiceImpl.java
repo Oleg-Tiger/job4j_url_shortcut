@@ -7,7 +7,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import ru.job4j.url.model.Account;
-import ru.job4j.url.repository.AccountRepository;
+import ru.job4j.url.repository.DataAccountRepository;
+
 import java.util.Optional;
 
 import static java.util.Collections.emptyList;
@@ -18,7 +19,8 @@ import static java.util.Collections.emptyList;
 @AllArgsConstructor
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-    private AccountRepository accounts;
+
+    private DataAccountRepository accounts;
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.job4j.url.model.Account;
-import ru.job4j.url.model.AccountDTO;
+import ru.job4j.url.dto.AccountDTO;
 import ru.job4j.url.service.DataAccountService;
 import javax.validation.Valid;
 import java.util.LinkedHashMap;

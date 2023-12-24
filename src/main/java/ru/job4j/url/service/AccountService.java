@@ -1,7 +1,7 @@
 package ru.job4j.url.service;
 
 import ru.job4j.url.model.Account;
-import ru.job4j.url.model.AccountDTO;
+import ru.job4j.url.dto.AccountDTO;
 import java.util.Optional;
 
 /**

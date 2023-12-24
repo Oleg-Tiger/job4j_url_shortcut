@@ -1,8 +1,8 @@
 package ru.job4j.url.service;
 
 import ru.job4j.url.model.Link;
-import ru.job4j.url.model.LinkDTO;
-import ru.job4j.url.model.LinkDTOStat;
+import ru.job4j.url.dto.LinkDTO;
+import ru.job4j.url.dto.LinkDTOStat;
 
 import java.util.List;
 import java.util.Optional;
